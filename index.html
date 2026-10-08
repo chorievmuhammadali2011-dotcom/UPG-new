@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>UPG — PC Hardware Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOADER ================= -->
+
+<div id="loader">
+    <div class="loader-logo">
+        UPG<span>.</span>
+    </div>
+
+    <div class="loader-line">
+        <i></i>
+    </div>
+
+    <small data-i18n="loading">
+        Загрузка UPG...
+    </small>
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="#home" class="logo">
+        UPG<span>.</span>
+    </a>
+
+    <nav id="nav">
+
+        <a href="#home" data-i18n="home">
+            Главная
+        </a>
+
+        <a href="#catalog" data-i18n="catalog">
+            Каталог
+        </a>
+
+        <a href="#builder" data-i18n="builder">
+            Собери ПК
+        </a>
+
+        <a href="#components" data-i18n="components">
+            Комплектующие
+        </a>
+
+    </nav>
+
+    <div class="actions">
+
+        <button id="theme">
+            ☼
+        </button>
+
+        <div class="lang">
+
+            <button id="langBtn">
+                RU ▾
+            </button>
+
+            <div id="langMenu">
+
+                <button data-lang="ru">
+                    Русский
+                </button>
+
+                <button data-lang="uz">
+                    O‘zbekcha
+                </button>
+
+                <button data-lang="en">
+                    English
+                </button>
+
+            </div>
+
+        </div>
+
+        <button id="cartBtn">
+            🛒
+            <b id="cartCount">0</b>
+        </button>
+
+        <button id="menu">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main id="home">
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div>
+
+        <label>
+            UPG / GAMING STORE
+        </label>
+
+        <h1 data-i18n="heroTitle">
+            Собери ПК,<br>
+            <em>который создан</em><br>
+            для победы.
+        </h1>
+
+        <p data-i18n="heroText">
+            100+ комплектующих с фотографиями,
+            мощный PC Builder и удобные фильтры.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a
+                class="primary"
+                href="#builder"
+                data-i18n="build"
+            >
+                Собрать ПК →
+            </a>
+
+            <a
+                class="secondary"
+                href="#catalog"
+                data-i18n="look"
+            >
+                Каталог
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-gpu">
+
+        <div class="orb"></div>
+
+        <div class="gpu-card">
+
+            <strong>
+                RTX
+            </strong>
+
+            <span>
+                BLACKWELL
+            </span>
+
+            <i></i>
+            <i></i>
+            <i></i>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TICKER ================= -->
+
+<section class="ticker">
+
+    RTX /
+    RYZEN /
+    INTEL /
+    DDR5 /
+    NVMe /
+    ASUS /
+    MSI /
+    GIGABYTE /
+    CORSAIR /
+    UPG /
+
+</section>
+
+
+<!-- ================= CATALOG ================= -->
+
+<section
+    class="section"
+    id="catalog"
+>
+
+    <div class="heading">
+
+        <div>
+
+            <label data-i18n="catalogLabel">
+                КАТАЛОГ
+            </label>
+
+            <h2 data-i18n="catalogTitle">
+                112 товаров
+            </h2>
+
+        </div>
+
+        <button
+            class="outline"
+            id="clearAll"
+            data-i18n="clear"
+        >
+            Сбросить фильтры
+        </button>
+
+    </div>
+
+
+    <div class="catalog-layout">
+
+
+        <!-- ================= FILTERS ================= -->
+
+        <aside class="filters">
+
+            <div class="filter-title">
+
+                <b data-i18n="filters">
+                    Фильтры
+                </b>
+
+                <span id="filterCount">
+                    0
+                </span>
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="filter-group">
+
+                <h4 data-i18n="category">
+                    Категория
+                </h4>
+
+                <div id="catFilters"></div>
+
+            </div>
+
+
+            <!-- BRAND -->
+
+            <div class="filter-group">
+
+                <h4 data-i18n="brand">
+                    Бренд
+                </h4>
+
+                <div id="brandFilters"></div>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="filter-group">
+
+                <h4 data-i18n="price">
+                    Цена
+                </h4>
+
+                <div class="range-values">
+
+                    <span>
+                        0
+                    </span>
+
+                    <span id="maxPriceLabel">
+                        40 млн
+                    </span>
+
+                </div>
+
+                <input
+                    id="maxPrice"
+                    type="range"
+                    min="0"
+                    max="40000000"
+                    step="100000"
+                    value="40000000"
+                >
+
+            </div>
+
+
+            <!-- RATING -->
+
+            <div class="filter-group">
+
+                <h4 data-i18n="rating">
+                    Рейтинг
+                </h4>
+
+                <select id="rating">
+
+                    <option value="0">
+                        Любой
+                    </option>
+
+                    <option value="4.5">
+                        4.5+
+                    </option>
+
+                    <option value="4.7">
+                        4.7+
+                    </option>
+
+                    <option value="4.8">
+                        4.8+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SORT -->
+
+            <div class="filter-group">
+
+                <h4 data-i18n="sort">
+                    Сортировка
+                </h4>
+
+                <select id="sort">
+
+                    <option value="popular">
+                        Популярные
+                    </option>
+
+                    <option value="cheap">
+                        Сначала дешевле
+                    </option>
+
+                    <option value="expensive">
+                        Сначала дороже
+                    </option>
+
+                    <option value="rating">
+                        По рейтингу
+                    </option>
+
+                    <option value="name">
+                        По названию
+                    </option>
+
+                </select>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= PRODUCTS ================= -->
+
+        <div class="products-area">
+
+
+            <!-- SEARCH -->
+
+            <div class="search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    id="search"
+                    data-i18n-placeholder="search"
+                    placeholder="Поиск RTX, Ryzen, ASUS..."
+                >
+
+                <button id="clearSearch">
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- CHIPS -->
+
+            <div
+                class="chips"
+                id="chips"
+            ></div>
+
+
+            <!-- FOUND -->
+
+            <div
+                class="found"
+                id="found"
+            ></div>
+
+
+            <!-- PRODUCT GRID -->
+
+            <div
+                class="grid"
+                id="grid"
+            ></div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="empty"
+                class="empty hidden"
+            >
+
+                <b>
+                    ⌕
+                </b>
+
+                <h3 data-i18n="nothing">
+                    Ничего не найдено
+                </h3>
+
+                <p data-i18n="change">
+                    Измени фильтры или поисковый запрос.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PC BUILDER ================= -->
+
+<section
+    class="builder section"
+    id="builder"
+>
+
+    <div class="heading">
+
+        <div>
+
+            <label>
+                UPG BUILDER
+            </label>
+
+            <h2 data-i18n="builderTitle">
+                Собери свой ПК
+            </h2>
+
+            <p data-i18n="builderText">
+                Выбирай детали — цена обновляется автоматически.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="builder-layout">
+
+
+        <!-- 3D PREVIEW -->
+
+        <div class="pc-preview">
+
+            <div class="pc3d">
+
+                <div class="glass">
+
+                    <div class="fan f1"></div>
+
+                    <div class="fan f2"></div>
+
+                    <div class="fan f3"></div>
+
+                    <div class="board">
+                        UPG
+                    </div>
+
+                    <div class="gpu-inside">
+                        GPU
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="shadow"></div>
+
+            <small>
+                ↻ 3D PREVIEW
+            </small>
+
+        </div>
+
+
+        <!-- BUILD PANEL -->
+
+        <div class="build-panel">
+
+            <div class="build-head">
+
+                <div>
+
+                    <small data-i18n="yourBuild">
+                        ТВОЯ СБОРКА
+                    </small>
+
+                    <h3>
+                        UPG Custom #001
+                    </h3>
+
+                </div>
+
+                <button
+                    id="resetBuild"
+                    class="outline"
+                    data-i18n="reset"
+                >
+                    Сбросить
+                </button>
+
+            </div>
+
+
+            <div id="slots"></div>
+
+
+            <div class="total">
+
+                <div>
+
+                    <small data-i18n="total">
+                        Итого
+                    </small>
+
+                    <strong id="total">
+                        0 сум
+                    </strong>
+
+                </div>
+
+                <button
+                    id="addBuild"
+                    class="primary"
+                    data-i18n="addBuild"
+                >
+                    Добавить сборку
+                </button>
+
+            </div>
+
+
+            <p
+                class="ok"
+                data-i18n="compatible"
+            >
+                ✓ Базовая совместимость AM5 / DDR5
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMPONENTS ================= -->
+
+<section
+    class="section"
+    id="components"
+>
+
+    <div class="heading">
+
+        <div>
+
+            <label data-i18n="componentsLabel">
+                КОМПЛЕКТУЮЩИЕ
+            </label>
+
+            <h2 data-i18n="componentsTitle">
+                Всё для сборки
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="component-cards"
+        id="componentCards"
+    ></div>
+
+</section>
+
+
+<!-- ================= PROMO ================= -->
+
+<section class="promo section">
+
+    <div>
+
+        <label>
+            UPG SERVICE
+        </label>
+
+        <h2 data-i18n="helpTitle">
+            Не знаешь, что выбрать?
+        </h2>
+
+        <p data-i18n="helpText">
+            Укажи бюджет и цель — подберём сбалансированную сборку.
+        </p>
+
+    </div>
+
+    <button
+        class="primary"
+        id="help"
+        data-i18n="choose"
+    >
+        Подобрать ПК →
+    </button>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div>
+
+        <a class="logo">
+            UPG<span>.</span>
+        </a>
+
+        <p>
+            Gaming hardware store & PC builder.
+        </p>
+
+    </div>
+
+
+    <div>
+
+        <b data-i18n="navigation">
+            Навигация
+        </b>
+
+        <a
+            href="#catalog"
+            data-i18n="catalog"
+        >
+            Каталог
+        </a>
+
+        <a
+            href="#builder"
+            data-i18n="builder"
+        >
+            Собери ПК
+        </a>
+
+    </div>
+
+
+    <div>
+
+        <b data-i18n="contact">
+            Контакты
+        </b>
+
+        <a href="tel:+998900000000">
+            +998 90 000 00 00
+        </a>
+
+        <a href="mailto:hello@upg.local">
+            hello@upg.local
+        </a>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= CART ================= -->
+
+<aside id="drawer">
+
+    <div class="drawer-head">
+
+        <h3 data-i18n="cart">
+            Корзина
+        </h3>
+
+        <button id="closeCart">
+            ×
+        </button>
+
+    </div>
+
+
+    <div id="cartItems"></div>
+
+
+    <div class="drawer-bottom">
+
+        <div>
+
+            <span data-i18n="total">
+                Итого
+            </span>
+
+            <b id="cartTotal">
+                0 сум
+            </b>
+
+        </div>
+
+        <button
+            class="primary"
+            id="checkout"
+            data-i18n="checkout"
+        >
+            Оформить заказ
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= OVERLAY ================= -->
+
+<div id="overlay"></div>
+
+
+<!-- ================= HELP MODAL ================= -->
+
+<div
+    id="modal"
+    class="hidden"
+>
+
+    <div class="modal">
+
+        <button id="closeModal">
+            ×
+        </button>
+
+        <label>
+            UPG CONFIG
+        </label>
+
+        <h2 data-i18n="modalTitle">
+            Подберём сборку
+        </h2>
+
+        <p data-i18n="modalText">
+            Напиши бюджет и для чего нужен компьютер.
+        </p>
+
+        <input
+            id="budget"
+            placeholder="$1500 / 20 000 000 сум"
+        >
+
+        <select>
+
+            <option>
+                Gaming
+            </option>
+
+            <option>
+                Study / Work
+            </option>
+
+            <option>
+                3D / Editing
+            </option>
+
+        </select>
+
+        <button
+            class="primary"
+            id="send"
+            data-i18n="send"
+        >
+            Отправить запрос
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div id="toast"></div>
+
+
+<!-- ================= PRODUCTS DATA ================= -->
+
+<script>
+window.UPG_PRODUCTS = [];
+</script>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
